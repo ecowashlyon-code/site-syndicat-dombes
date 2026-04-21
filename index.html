@@ -460,6 +460,10 @@
     footer .footer-links { margin-top: 8px; display: flex; gap: 16px; justify-content: center; }
     footer .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
     footer .footer-links a:hover { color: var(--or); }
+    footer .footer-social { margin-top: 14px; display: flex; justify-content: center; gap: 12px; }
+    footer .footer-social a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    footer .footer-social a:hover { color: #1877F2; }
+    footer .footer-social svg { width: 28px; height: 28px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -1027,6 +1031,13 @@
 <footer>
   <strong>Syndicat des Étangs de la Dombes</strong> — 2 Grande rue, 01320 CHALAMONT<br>
   Tél. 04 74 36 62 81 · Mobile 07 85 90 30 55 · syndicatdesetangsdeladombes@gmail.com
+  <div class="footer-social">
+    <a href="https://www.facebook.com/61573753287959" target="_blank" aria-label="Facebook du Syndicat des Étangs de la Dombes">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+      </svg>
+    </a>
+  </div>
   <div class="footer-links">
     <a href="#">Plan du site</a>
     <a href="#">Mentions légales</a>
