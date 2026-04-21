@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syndicat prout des Étangs de la Dombes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bleu:     #1a3a5c;
+      --bleu-mid: #2a6496;
+      --bleu-clair:#4a9cc7;
+      --eau:      #e8f4f8;
+      --vert:     #3d7a4e;
+      --or:       #c8952a;
+      --sable:    #f5f0e8;
+      --texte:    #2c2c2c;
+      --gris:     #6c757d;
+      --blanc:    #ffffff;
+      --ombre:    0 4px 20px rgba(0,0,0,0.12);
+      --radius:   10px;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texte);
+      background: var(--blanc);
+      line-height: 1.7;
+    }
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.25; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(26,58,92,0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--or);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .nav-logo span {
+      color: var(--blanc);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .nav-links {
+      display: flex; gap: 4px; list-style: none;
+    }
+    .nav-links > li {
+      position: relative;
+    }
+    .nav-links > li > a, .nav-links > li > button {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      display: flex; align-items: center; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > button:hover,
+    .nav-links > li.active > a,
+    .nav-links > li.active > button {
+      color: var(--blanc);
+      background: rgba(255,255,255,0.14);
+    }
+    .nav-links .chevron { font-size: 10px; opacity: 0.7; transition: transform 0.2s; }
+    .nav-links > li:hover .chevron { transform: rotate(180deg); }
+
+    /* Dropdown */
+    .dropdown {
+      display: none;
+      position: absolute; top: 100%; left: 0;
+      background: var(--blanc);
+      border-radius: var(--radius);
+      box-shadow: var(--ombre);
+      min-width: 240px;
+      padding: 8px 0;
+      z-index: 500;
+    }
+    .nav-links > li:hover .dropdown { display: block; }
+    .dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--texte);
+      font-size: 0.875rem;
+      transition: background 0.15s;
+    }
+    .dropdown a:hover { background: var(--eau); color: var(--bleu); }
+    .dropdown .sep {
+      height: 1px; background: #e9ecef;
+      margin: 4px 12px;
+    }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blanc); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(26,58,92,0.75) 0%, rgba(42,100,150,0.55) 50%, rgba(61,122,78,0.45) 100%),
+        url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+    }
+    .hero::after {
+      content:'';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: linear-gradient(transparent, var(--blanc));
+    }
+    .hero-badge {
+      background: rgba(200,149,42,0.9);
+      color: var(--blanc);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--blanc);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+    .hero-cta {
+      display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 50px;
+      font-size: 0.9rem; font-weight: 600;
+      transition: all 0.25s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--or); color: var(--blanc); }
+    .btn-primary:hover { background: #b07d20; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,149,42,0.4); }
+    .btn-outline { background: transparent; color: var(--blanc); border: 2px solid rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bleu);
+      padding: 32px 24px;
+    }
+    .stats-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px; text-align: center;
+    }
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; color: var(--or); font-weight: 700;
+    }
+    .stat-item .label { color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-top: 4px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 24px; }
+    section:nth-child(even) { background: var(--sable); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--or); margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--bleu);
+      margin-bottom: 16px;
+    }
+    .section-header p { color: var(--gris); max-width: 560px; margin: 0 auto; font-size: 1.05rem; }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--or), var(--bleu-clair));
+      border-radius: 2px; margin: 16px auto 0;
+    }
+
+    /* ── PRESIDENT ── */
+    .president-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center;
+    }
+    .president-img-wrap {
+      position: relative;
+    }
+    .president-img-wrap img {
+      width: 100%; border-radius: 16px;
+      box-shadow: var(--ombre);
+      object-fit: cover; height: 420px;
+    }
+    .president-img-wrap::before {
+      content: '';
+      position: absolute; top: -12px; left: -12px; right: 12px; bottom: 12px;
+      border: 3px solid var(--or); border-radius: 16px; z-index: -1;
+    }
+    .president-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-style: italic;
+      color: var(--bleu); line-height: 1.6;
+      border-left: 4px solid var(--or);
+      padding-left: 24px; margin-bottom: 24px;
+    }
+    .president-text { color: var(--texte); margin-bottom: 16px; }
+    .president-sig { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--bleu); margin-top: 24px; }
+    .president-sig span { display: block; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--gris); }
+
+    /* ── QUI SOMMES-NOUS ── */
+    .qui-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start;
+    }
+    .fondation-card {
+      background: var(--bleu);
+      color: var(--blanc); border-radius: 16px;
+      padding: 40px; margin-bottom: 32px;
+    }
+    .fondation-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .fondation-card p { opacity: 0.9; line-height: 1.8; }
+    .missions-list { list-style: none; }
+    .missions-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 0; border-bottom: 1px solid #e9ecef;
+    }
+    .missions-list li:last-child { border: none; }
+    .missions-list .icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--eau); color: var(--bleu-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    }
+    .missions-list strong { display: block; color: var(--bleu); margin-bottom: 3px; }
+    .missions-list span { font-size: 0.9rem; color: var(--gris); }
+
+    /* CA */
+    .ca-card {
+      background: var(--blanc); border-radius: 16px;
+      box-shadow: var(--ombre); padding: 32px;
+    }
+    .ca-card h3 { font-size: 1.2rem; color: var(--bleu); margin-bottom: 20px; border-bottom: 2px solid var(--eau); padding-bottom: 12px; }
+    .ca-member {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+    }
+    .ca-member:last-child { border: none; }
+    .ca-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--bleu), var(--bleu-clair));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blanc); font-size: 14px; font-weight: 600; flex-shrink: 0;
+    }
+    .ca-name { font-weight: 600; font-size: 0.9rem; color: var(--texte); }
+    .ca-role { font-size: 0.78rem; color: var(--or); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ── MISSIONS ── */
+    .missions-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; justify-content: center;
+    }
+    .tab-btn {
+      padding: 10px 22px; border-radius: 50px; border: none; cursor: pointer;
+      font-size: 0.88rem; font-weight: 600;
+      background: var(--eau); color: var(--bleu-mid);
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--bleu); color: var(--blanc);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .theme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .theme-card {
+      background: var(--blanc); border-radius: 16px;
+      box-shadow: var(--ombre); overflow: hidden;
+      transition: transform 0.25s;
+    }
+    .theme-card:hover { transform: translateY(-4px); }
+    .theme-card-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--bleu), var(--bleu-clair));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 64px; color: rgba(255,255,255,0.9);
+    }
+    .theme-card-img.eau {
+      background: linear-gradient(135deg, #1a6b8a, #4a9cc7);
+    }
+    .theme-card-img.conciliation {
+      background: linear-gradient(135deg, #2d6a4f, #52b788);
+    }
+    .theme-card-body { padding: 28px; }
+    .theme-card-body h3 { font-size: 1.3rem; color: var(--bleu); margin-bottom: 12px; }
+    .theme-card-body p { color: var(--gris); font-size: 0.95rem; line-height: 1.8; }
+
+    /* Espèces */
+    .especes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .espece-card {
+      background: var(--blanc); border-radius: 16px;
+      box-shadow: var(--ombre); overflow: hidden;
+    }
+    .espece-header {
+      padding: 28px 28px 20px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .espece-icon {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .espece-icon.danger { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .espece-card h3 { font-size: 1.25rem; color: var(--bleu); margin-bottom: 6px; }
+    .badge-invasive {
+      display: inline-block; padding: 3px 10px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      background: #fce4ec; color: #c62828;
+    }
+    .espece-body { padding: 0 28px 28px; color: var(--gris); font-size: 0.95rem; line-height: 1.8; }
+    .espece-alert {
+      margin-top: 16px; padding: 12px 16px; border-radius: 8px;
+      background: #fff8e1; border-left: 4px solid #f9a825;
+      font-size: 0.88rem; color: #6d4c00;
+    }
+
+    /* L'Étang */
+    .etang-intro {
+      background: var(--bleu); color: var(--blanc);
+      border-radius: 16px; padding: 40px; margin-bottom: 40px;
+    }
+    .etang-intro h3 { font-size: 1.5rem; margin-bottom: 16px; }
+    .etang-intro p { opacity: 0.9; line-height: 1.8; }
+    .pratiques-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pratique-card {
+      background: var(--blanc); border-radius: 14px;
+      padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--bleu-clair);
+      transition: transform 0.2s;
+    }
+    .pratique-card:hover { transform: translateY(-3px); }
+    .pratique-icon { font-size: 32px; margin-bottom: 14px; }
+    .pratique-card h4 { font-size: 1rem; color: var(--bleu); margin-bottom: 8px; }
+    .pratique-card p { font-size: 0.88rem; color: var(--gris); line-height: 1.7; }
+
+    /* ── ACTUALITÉS ── */
+    .actu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .actu-card {
+      background: var(--blanc); border-radius: 16px;
+      box-shadow: var(--ombre); overflow: hidden;
+      transition: transform 0.25s;
+    }
+    .actu-card:hover { transform: translateY(-5px); }
+    .actu-img {
+      height: 200px;
+      background: linear-gradient(135deg, var(--bleu), var(--vert));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 56px;
+    }
+    .actu-img.pêche { background: linear-gradient(135deg, #1a5276, #2e86c1); }
+    .actu-img.formation { background: linear-gradient(135deg, #1e8449, #27ae60); }
+    .actu-img.visite { background: linear-gradient(135deg, #784212, #ca6f1e); }
+    .actu-body { padding: 24px; }
+    .actu-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .actu-cat {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      background: var(--eau); color: var(--bleu-mid);
+      padding: 3px 10px; border-radius: 50px;
+    }
+    .actu-date { font-size: 0.8rem; color: var(--gris); }
+    .actu-body h3 { font-size: 1.1rem; color: var(--bleu); margin-bottom: 10px; line-height: 1.4; }
+    .actu-body p { font-size: 0.9rem; color: var(--gris); line-height: 1.7; }
+    .actu-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px; font-size: 0.88rem; font-weight: 600;
+      color: var(--bleu-mid);
+    }
+    .actu-link:hover { color: var(--or); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bleu); color: var(--blanc); }
+    #contact .section-tag { color: var(--or); }
+    #contact .section-header h2 { color: var(--blanc); }
+    #contact .section-header p { color: rgba(255,255,255,0.75); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-card {
+      background: rgba(255,255,255,0.08); border-radius: 16px;
+      padding: 36px; border: 1px solid rgba(255,255,255,0.12);
+    }
+    .contact-card h3 { font-size: 1.3rem; margin-bottom: 24px; color: var(--blanc); }
+    .contact-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .contact-item .ci-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(200,149,42,0.25); color: var(--or);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .contact-item .ci-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 3px; }
+    .contact-item .ci-value { font-weight: 600; font-size: 0.95rem; }
+
+    .adhesion-benefits { list-style: none; margin: 16px 0 24px; }
+    .adhesion-benefits li {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.92rem;
+    }
+    .adhesion-benefits li::before { content: '✓'; color: var(--or); font-weight: 700; flex-shrink: 0; }
+    .adhesion-benefits li:last-child { border: none; }
+    .btn-or { background: var(--or); color: var(--blanc); display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-or:hover { background: #b07d20; transform: translateY(-2px); }
+
+    /* Liens */
+    .liens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+    .lien-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85); font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .lien-item:hover { background: rgba(255,255,255,0.14); color: var(--blanc); }
+    .lien-item .li-icon { font-size: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1f33;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+    }
+    footer strong { color: rgba(255,255,255,0.85); }
+    footer .footer-links { margin-top: 8px; display: flex; gap: 16px; justify-content: center; }
+    footer .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+    footer .footer-links a:hover { color: var(--or); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .president-grid, .qui-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .theme-grid, .especes-grid, .actu-grid { grid-template-columns: 1fr; }
+      .pratiques-grid { grid-template-columns: 1fr 1fr; }
+      .liens-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 60px 16px; }
+      .pratiques-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Mobile nav */
+    .nav-mobile {
+      display: none; flex-direction: column;
+      background: var(--bleu); padding: 12px 24px 20px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: rgba(255,255,255,0.85); padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+    .nav-mobile a:last-child { border: none; }
+    .nav-mobile a:hover { color: var(--blanc); }
+
+    /* Scroll indicator */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 500;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--or); color: var(--blanc);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,149,42,0.4);
+      opacity: 0; transform: translateY(10px);
+      transition: all 0.3s; border: none;
+    }
+    .scroll-top.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="logo-icon">🌊</div>
+      <span>Syndicat des Étangs<br>de la Dombes</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <button onclick="toggleDrop(this)">Qui sommes-nous ? <span class="chevron">▼</span></button>
+        <div class="dropdown">
+          <a href="#president">Le Mot du Président</a>
+          <div class="sep"></div>
+          <a href="#presentation">Le Syndicat des Étangs</a>
+          <a href="#ca">Conseil d'Administration</a>
+        </div>
+      </li>
+      <li>
+        <button onclick="toggleDrop(this)">Nos missions <span class="chevron">▼</span></button>
+        <div class="dropdown">
+          <a href="#themes">Thèmes abordés</a>
+          <a href="#especes">Espèces invasives</a>
+          <a href="#etang">L'Étang</a>
+        </div>
+      </li>
+      <li><a href="#actualites">Actualités</a></li>
+      <li>
+        <button onclick="toggleDrop(this)">Contact &amp; Adhésion <span class="chevron">▼</span></button>
+        <div class="dropdown">
+          <a href="#contact-adresses">Adresses</a>
+          <a href="#adhesion">Adhérer</a>
+          <a href="#liens">Liens utiles</a>
+        </div>
+      </li>
+    </ul>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#president">Le Mot du Président</a>
+    <a href="#presentation">Le Syndicat des Étangs</a>
+    <a href="#ca">Conseil d'Administration</a>
+    <a href="#themes">Thèmes abordés</a>
+    <a href="#especes">Espèces invasives</a>
+    <a href="#etang">L'Étang</a>
+    <a href="#actualites">Actualités & Évènements</a>
+    <a href="#contact-adresses">Contact & Adresses</a>
+    <a href="#adhesion">Adhérer</a>
+    <a href="#liens">Liens utiles</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="accueil">
+  <div class="hero-badge">Depuis 1918 · Villars-les-Dombes</div>
+  <h1>Syndicat des Étangs de la Dombes</h1>
+  <p style="color:#000000;">Défense, préservation et valorisation des étangs dombistes — un patrimoine naturel et agricole unique de plus de 10 000 hectares.</p>
+  <div class="hero-cta">
+    <a href="#presentation" class="btn btn-primary">Découvrir le Syndicat</a>
+    <a href="#contact-adresses" class="btn btn-outline">Nous contacter</a>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="num">+10 000</div>
+      <div class="label">hectares de zones humides</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">~1 000</div>
+      <div class="label">étangs en Dombes</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">1918</div>
+      <div class="label">année de création du Syndicat</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">106</div>
+      <div class="label">ans au service des propriétaires</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ QUI SOMMES-NOUS ══════════════════════════════ -->
+
+<!-- Le Mot du Président -->
+<section id="president">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Qui sommes-nous ?</div>
+      <h2>Le Mot du Président</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="president-grid">
+      <div class="president-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+          alt="Le Président du Syndicat des Étangs de la Dombes"
+        />
+      </div>
+      <div>
+        <p class="president-quote">
+          « La Dombes et ses 1 000 étangs représente plus de 10 000 hectares de zone humide ; un monde à part avec une personnalité incomparable, façonné par les hommes. »
+        </p>
+        <p class="president-text">
+          Ce territoire exceptionnel a été façonné par des hommes qui ont su mettre à profit l'argile et l'eau en mettant en valeur une faune et une flore très riches, mais fragiles et menacées.
+        </p>
+        <p class="president-text">
+          Les Étangs de la Dombes doivent garder leur personnalité unique en sauvegardant les méthodes ancestrales de gestion de la terre tout en maîtrisant leur écosystème.
+        </p>
+        <p class="president-text">
+          Plus que jamais, les propriétaires doivent se mobiliser afin d'assurer la pérennité de leurs étangs, face à une pression de plus en plus forte visant à limiter leur liberté de gestion. <strong>Votre Syndicat est là pour vous représenter et défendre vos intérêts.</strong>
+        </p>
+        <div class="president-sig">
+          Stéphane Mérieux
+          <span>Président du Syndicat des Étangs de la Dombes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Présentation & CA -->
+<section id="presentation" style="background:var(--sable)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Qui sommes-nous ?</div>
+      <h2>Le Syndicat des Étangs de la Dombes</h2>
+      <div class="divider"></div>
+      <p>Une organisation centenaire au service des propriétaires et exploitants d'étangs.</p>
+    </div>
+    <div class="qui-grid">
+      <div>
+        <div class="fondation-card">
+          <h3>🏛️ Notre histoire</h3>
+          <p>
+            Le Syndicat des Propriétaires et Exploitants d'Étangs de la Dombes a été <strong>créé à Villars-les-Dombes en 1918</strong>. Son but est de défendre les intérêts de ses adhérents et d'étudier toutes questions relatives aux étangs dombistes.
+          </p>
+        </div>
+        <ul class="missions-list">
+          <li>
+            <div class="icon">💧</div>
+            <div>
+              <strong>Soutien à la gestion</strong>
+              <span>Aide à la gestion des étangs en Dombes selon les bonnes pratiques et critères essentiels.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon">⚖️</div>
+            <div>
+              <strong>Commission de conciliation</strong>
+              <span>Règlement amiable des différends avant toute juridiction ; respect des Usages des Étangs de la Dombes.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon">🌿</div>
+            <div>
+              <strong>Espèces invasives</strong>
+              <span>Recherche de solutions pour gérer et limiter la prolifération des espèces envahissantes.</span>
+            </div>
+          </li>
+          <li>
+            <div class="icon">📋</div>
+            <div>
+              <strong>Représentation & défense</strong>
+              <span>Le Syndicat représente ses adhérents face aux pouvoirs publics et défend leurs droits.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="ca">
+        <div class="ca-card">
+          <h3>Conseil d'Administration 2023</h3>
+          <div class="ca-member">
+            <div class="ca-avatar">SM</div>
+            <div><div class="ca-name">Stéphane Mérieux</div><div class="ca-role">Président</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">JP</div>
+            <div><div class="ca-name">Jean-Luc Payet-Pigeon</div><div class="ca-role">Vice-Président</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">PF</div>
+            <div><div class="ca-name">Patrice Faure</div><div class="ca-role">Vice-Président</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">MP</div>
+            <div><div class="ca-name">Marie-Christiane Payet-Pigeon</div><div class="ca-role">Trésorière</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">PD</div>
+            <div><div class="ca-name">Pascal Dannancier</div><div class="ca-role">Secrétaire</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">CF</div>
+            <div><div class="ca-name">Caroline Faure</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">MC</div>
+            <div><div class="ca-name">Marc Curtet</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">RB</div>
+            <div><div class="ca-name">Roland de Barbentane</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">MB</div>
+            <div><div class="ca-name">Maurice Bodin</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">GC</div>
+            <div><div class="ca-name">Guy Confavreux</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">CD</div>
+            <div><div class="ca-name">Christian Desombre</div><div class="ca-role">Membre</div></div>
+          </div>
+          <div class="ca-member">
+            <div class="ca-avatar">JC</div>
+            <div><div class="ca-name">Julien Cartier-Millon</div><div class="ca-role">Membre</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ NOS MISSIONS ══════════════════════════════ -->
+
+<!-- Thèmes abordés -->
+<section id="themes">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Nos missions</div>
+      <h2>Thèmes abordés</h2>
+      <div class="divider"></div>
+      <p>Les grandes problématiques auxquelles le Syndicat répond au quotidien.</p>
+    </div>
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-card-img eau">💧</div>
+        <div class="theme-card-body">
+          <h3>Gestion de l'eau</h3>
+          <p>
+            Le cycle des étangs et les chaînes d'étangs sont des facteurs essentiels de la gestion de l'eau en Dombes. La maîtrise des niveaux d'eau, des périodes d'assec et du remplissage conditionne la qualité de la pisciculture et la biodiversité des milieux.
+          </p>
+          <p style="margin-top:12px;">
+            Le Syndicat accompagne ses adhérents dans la compréhension et l'application des règles de gestion hydraulique spécifiques au territoire dombiste, en lien avec les organismes compétents (OFB, DREAL, DDT).
+          </p>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-card-img conciliation">⚖️</div>
+        <div class="theme-card-body">
+          <h3>Commission de conciliation</h3>
+          <p>
+            Terrain argileux, la Dombes était originairement un immense marécage. Les étangs ont été créés au Moyen-Âge pour assainir les terres et en tirer le meilleur profit : agriculture et pisciculture y sont nées conjointement.
+          </p>
+          <p style="margin-top:12px;">
+            La commission de conciliation permet de régler les différends à l'amiable entre propriétaires, exploitants et tiers — étape indispensable avant tout recours juridictionnel — en veillant au respect des Usages des Étangs de la Dombes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Espèces invasives -->
+<section id="especes" style="background:var(--sable)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Nos missions</div>
+      <h2>Espèces invasives</h2>
+      <div class="divider"></div>
+      <p>Deux plantes envahissantes menacent particulièrement les étangs dombistes.</p>
+    </div>
+    <div class="especes-grid">
+      <div class="espece-card">
+        <div class="espece-header">
+          <div class="espece-icon danger">🌿</div>
+          <div>
+            <h3>La Jussie</h3>
+            <span class="badge-invasive">⚠ Espèce invasive</span>
+          </div>
+        </div>
+        <div class="espece-body">
+          <p>
+            La jussie est connue dans le Département depuis <strong>1995</strong>. Les multiples conséquences de sa présence ont incité la mise en place d'un <strong>plan départemental de lutte dès 2012</strong>, animé depuis 2014 par la FREDON.
+          </p>
+          <p style="margin-top:12px;">
+            Cette plante amphibie colonise rapidement les berges et les eaux peu profondes, étouffant la végétation indigène, réduisant l'oxygène disponible et perturbant profondément l'équilibre écologique des étangs.
+          </p>
+          <div class="espece-alert">
+            🔔 Signalez toute présence de jussie sur votre étang au Syndicat.
+          </div>
+        </div>
+      </div>
+      <div class="espece-card">
+        <div class="espece-header">
+          <div class="espece-icon">🌱</div>
+          <div>
+            <h3>La Myriophylle</h3>
+            <span class="badge-invasive">⚠ Espèce invasive</span>
+          </div>
+        </div>
+        <div class="espece-body">
+          <p>
+            Envahisseur redoutable sous ses allures de belle plante prisée des aquariophiles, cette espèce invasive <strong>colonise des plans d'eau de l'Ain</strong>, région touristique et piscicole aux milliers d'étangs.
+          </p>
+          <p style="margin-top:12px;">
+            Le myriophylle du Brésil forme des tapis denses sous la surface qui interceptent la lumière et appauvrissent la biodiversité aquatique, rendant la pêche et l'exploitation difficiles.
+          </p>
+          <div class="espece-alert">
+            🔔 Ne jamais introduire de plantes d'aquarium dans les étangs ou cours d'eau.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L'Étang -->
+<section id="etang">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Nos missions</div>
+      <h2>L'Étang — Gestion &amp; Bonnes pratiques</h2>
+      <div class="divider"></div>
+      <p>Les critères essentiels pour une gestion durable et efficace des étangs dombistes.</p>
+    </div>
+    <div class="etang-intro">
+      <h3>La gestion de l'étang en Dombes</h3>
+      <p>
+        Les bonnes pratiques de gestion d'un étang en Dombes se résument selon des critères essentiels, transmis de génération en génération et formalisés par le Syndicat. Respecter ces pratiques permet d'assurer la pérennité de l'étang, la qualité de la production piscicole et la richesse écologique du milieu.
+      </p>
+    </div>
+    <div class="pratiques-grid">
+      <div class="pratique-card">
+        <div class="pratique-icon">🔗</div>
+        <h4>Chaîne d'étangs</h4>
+        <p>Respecter le fonctionnement de la chaîne d'étangs et des coutumes et usages dombistes, piliers de la gestion hydraulique locale.</p>
+      </div>
+      <div class="pratique-card">
+        <div class="pratique-icon">🛠️</div>
+        <h4>Entretien périodique</h4>
+        <p>Curage de la pêcherie et du bief, réfection de la chaussée, limitation de la ceinture végétale, nettoyage des fossés — de préférence en année d'assec.</p>
+      </div>
+      <div class="pratique-card">
+        <div class="pratique-icon">🌾</div>
+        <h4>Mise en assec</h4>
+        <p>Mettre l'étang en assec au moins une fois tous les 5 ans pour régénérer le sol, avec une culture adaptée pendant la période sèche.</p>
+      </div>
+      <div class="pratique-card">
+        <div class="pratique-icon">🐟</div>
+        <h4>Empoissonnage</h4>
+        <p>Procéder à des empoissonnages adaptés à la surface et à la spécificité de chaque étang, en privilégiant les poissons issus de ses propres pêches.</p>
+      </div>
+      <div class="pratique-card">
+        <div class="pratique-icon">🌊</div>
+        <h4>Végétation aquatique</h4>
+        <p>Surveiller la végétation aquatique, limiter la prolifération des châtaignes d'eau et signaler toute présence de jussie ou myriophylle.</p>
+      </div>
+      <div class="pratique-card">
+        <div class="pratique-icon">🌿</div>
+        <h4>Biodiversité</h4>
+        <p>Œuvrer pour la préservation des espèces végétales et animales protégées, tout en contrôlant les espèces nuisibles (ragondins, rats musqués, cormorans).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ ACTUALITÉS ══════════════════════════════ -->
+
+<section id="actualites" style="background:var(--sable)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">La vie du Syndicat</div>
+      <h2>Actualités &amp; Évènements</h2>
+      <div class="divider"></div>
+      <p>Les dernières nouvelles du Syndicat et de la filière piscicole dombiste.</p>
+    </div>
+    <div class="actu-grid">
+      <div class="actu-card">
+        <div class="actu-img formation">🎓</div>
+        <div class="actu-body">
+          <div class="actu-meta">
+            <span class="actu-cat">Formation</span>
+            <span class="actu-date">2024</span>
+          </div>
+          <h3>Formation Us et Coutumes</h3>
+          <p>L'APPED et le Syndicat des étangs font un travail constant de sensibilisation auprès des propriétaires sur la gestion de l'eau en Dombes. Une formation a été organisée conjointement par les deux structures.</p>
+          <a href="#contact-adresses" class="actu-link">En savoir plus →</a>
+        </div>
+      </div>
+      <div class="actu-card">
+        <div class="actu-img pêche">🎣</div>
+        <div class="actu-body">
+          <div class="actu-meta">
+            <span class="actu-cat">Pisciculture</span>
+            <span class="actu-date">2024</span>
+          </div>
+          <h3>Pêche d'étang — La pisciculture sort la tête de l'eau</h3>
+          <p>La pisciculture Dombiste vient de passer une année 2023 difficile. La filière a résisté grâce à une mobilisation collective. Le Conseil Régional AURA et le CD01 ont convié leurs élus à une pêche d'étang pour célébrer ce renouveau.</p>
+          <a href="#contact-adresses" class="actu-link">En savoir plus →</a>
+        </div>
+      </div>
+      <div class="actu-card">
+        <div class="actu-img visite">🤝</div>
+        <div class="actu-body">
+          <div class="actu-meta">
+            <span class="actu-cat">Partenariats</span>
+            <span class="actu-date">2024</span>
+          </div>
+          <h3>Le Syndicat des Étangs Corréziens en visite</h3>
+          <p>L'ADAPRA Poisson Auvergne Rhône Alpes, le Syndicat des Étangs et l'APPED Poissons de Dombes ont accueilli les représentants corréziens pour présenter la structuration de la filière piscicole en Dombes.</p>
+          <a href="#contact-adresses" class="actu-link">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ CONTACT & ADHÉSION ══════════════════════════════ -->
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Rejoignez-nous</div>
+      <h2>Contact &amp; Adhésion</h2>
+      <div class="divider"></div>
+      <p>Une question, une demande ? Contactez-nous ou adhérez pour bénéficier de tous nos services.</p>
+    </div>
+    <div class="contact-grid">
+
+      <!-- Adresses -->
+      <div id="contact-adresses">
+        <div class="contact-card">
+          <h3>📍 Nos coordonnées</h3>
+          <div class="contact-item">
+            <div class="ci-icon">🏠</div>
+            <div>
+              <div class="ci-label">Adresse</div>
+              <div class="ci-value">2 Grande rue<br>01320 CHALAMONT</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Téléphone fixe</div>
+              <div class="ci-value">04 74 36 62 81</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📱</div>
+            <div>
+              <div class="ci-label">Mobile</div>
+              <div class="ci-value">07 85 90 30 55</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">syndicatdesetangsdeladombes@gmail.com</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liens -->
+        <div id="liens" style="margin-top:28px">
+          <h3 style="font-size:1.1rem;margin-bottom:16px;color:rgba(255,255,255,0.9);">🔗 Liens utiles</h3>
+          <div class="liens-grid">
+            <a href="https://www.ain.gouv.fr" target="_blank" class="lien-item"><span class="li-icon">🏛️</span> Préfecture de l'Ain</a>
+            <a href="https://www.ain.fr" target="_blank" class="lien-item"><span class="li-icon">🏛️</span> Conseil Départemental de l'Ain</a>
+            <a href="https://www.ofb.gouv.fr" target="_blank" class="lien-item"><span class="li-icon">🌿</span> Office Français de la Biodiversité</a>
+            <a href="https://www.dreal.auvergne-rhone-alpes.gouv.fr" target="_blank" class="lien-item"><span class="li-icon">📋</span> DREAL Auvergne-Rhône-Alpes</a>
+            <a href="https://www.fdc01.fr" target="_blank" class="lien-item"><span class="li-icon">🦌</span> Fédération des Chasseurs de l'Ain</a>
+            <a href="#" class="lien-item"><span class="li-icon">🐟</span> APPED – Poissons de Dombes</a>
+            <a href="https://www.foret-privee.fr" target="_blank" class="lien-item"><span class="li-icon">🌲</span> Forêt Privée Française</a>
+            <a href="#" class="lien-item"><span class="li-icon">💧</span> Contrat de Rivière de la Veyle</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adhésion -->
+      <div id="adhesion">
+        <div class="contact-card">
+          <h3>🤝 Adhérer au Syndicat</h3>
+          <p style="color:rgba(255,255,255,0.8);margin-bottom:20px;font-size:0.95rem;">
+            L'adhésion au Syndicat vous permet de bénéficier d'un soutien personnalisé et d'une représentation collective.
+          </p>
+          <ul class="adhesion-benefits">
+            <li>Bulletin d'information périodique</li>
+            <li>Aide personnalisée, informations et conseils</li>
+            <li>Représentativité pour les sujets communs</li>
+            <li>Assurance Responsabilité Civile défense et recours</li>
+            <li>Accès à la commission de conciliation</li>
+            <li>Soutien lors de contrôles administratifs</li>
+          </ul>
+          <p style="color:rgba(255,255,255,0.7);font-size:0.88rem;margin-bottom:20px;">
+            L'adhésion est conditionnée au versement d'une cotisation annuelle. Le bulletin d'adhésion 2024 est disponible sur demande.
+          </p>
+          <a href="mailto:syndicatdesetangsdeladombes@gmail.com?subject=Demande d'adhésion" class="btn-or">
+            ✉️ Demander le bulletin d'adhésion
+          </a>
+          <div style="margin-top:24px;padding:16px;background:rgba(255,255,255,0.07);border-radius:10px;border:1px solid rgba(255,255,255,0.1);">
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.75);">
+              📋 <strong style="color:rgba(255,255,255,0.9);">Assemblée Générale</strong><br>
+              Le Syndicat se réunit une fois par an en Assemblée Générale. Adhérents : pensez à vous inscrire pour participer aux décisions collectives.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>Syndicat des Étangs de la Dombes</strong> — 2 Grande rue, 01320 CHALAMONT<br>
+  Tél. 04 74 36 62 81 · Mobile 07 85 90 30 55 · syndicatdesetangsdeladombes@gmail.com
+  <div class="footer-links">
+    <a href="#">Plan du site</a>
+    <a href="#">Mentions légales</a>
+    <a href="#accueil">Haut de page ↑</a>
+  </div>
+</footer>
+
+<!-- Scroll-to-top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Scroll-to-top visibility
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Dropdown toggle for nav buttons
+  function toggleDrop(btn) { /* handled by CSS :hover */ }
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-mobile a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navItems = document.querySelectorAll('.nav-links > li');
+  const sectionMap = {
+    'president': 0, 'presentation': 0, 'ca': 0,
+    'themes': 1, 'especes': 1, 'etang': 1,
+    'actualites': 2,
+    'contact': 3, 'contact-adresses': 3, 'adhesion': 3, 'liens': 3
+  };
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navItems.forEach((li, i) => {
+      li.classList.toggle('active', sectionMap[current] === i);
+    });
+  });
+</script>
+
+</body>
+</html>
