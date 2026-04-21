@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion de l'eau — Syndicat des Étangs de la Dombes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --marine: #1a3a5c;
+      --or:     #c8952a;
+      --vert:   #3d7a4e;
+      --blanc:  #ffffff;
+      --eau:    #e8f4f8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #333; background: #f8f6f0; }
+
+    nav {
+      background: var(--marine);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav img { height: 44px; width: auto; }
+    nav a.back {
+      margin-left: auto;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    nav a.back:hover { color: var(--or); }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2a6496 100%);
+      color: var(--blanc);
+      text-align: center;
+      padding: 56px 24px 48px;
+    }
+    .page-hero .tag {
+      display: inline-block;
+      background: rgba(200,149,42,0.2);
+      color: var(--or);
+      border: 1px solid var(--or);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 1.05rem; }
+
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 40px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      margin-bottom: 28px;
+    }
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--marine);
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f0ede6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card p { color: #444; line-height: 1.8; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul, .card ol { color: #444; line-height: 1.9; padding-left: 22px; margin-top: 8px; }
+    .card li { margin-bottom: 8px; }
+    .card strong { color: var(--marine); }
+
+    .etang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .etang-item {
+      background: var(--eau);
+      border-radius: 8px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--marine);
+    }
+    .etang-item strong { display: block; color: var(--marine); margin-bottom: 4px; font-size: 0.95rem; }
+    .etang-item p { font-size: 0.88rem; color: #555; line-height: 1.6; margin: 0; }
+
+    .cycle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .cycle-item {
+      background: #f8faf5;
+      border-radius: 8px;
+      padding: 16px;
+      border-top: 3px solid var(--vert);
+      text-align: center;
+    }
+    .cycle-item .num { font-size: 1.5rem; margin-bottom: 6px; }
+    .cycle-item strong { display: block; color: var(--vert); margin-bottom: 6px; font-size: 0.95rem; }
+    .cycle-item p { font-size: 0.86rem; color: #555; line-height: 1.6; margin: 0; }
+
+    .note {
+      background: #fff8e6;
+      border-left: 3px solid var(--or);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      color: #666;
+      font-size: 0.92rem;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+    .highlight {
+      background: #f0f7ff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 14px;
+      border: 1px solid #c8dff0;
+    }
+    .highlight p { color: #444; font-size: 0.92rem; line-height: 1.7; margin: 0; }
+
+    footer {
+      background: var(--marine);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+    }
+    footer strong { color: rgba(255,255,255,0.85); }
+    footer a { color: var(--or); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <img src="logo syndicat.PNG" alt="Syndicat des Étangs de la Dombes" />
+  <a href="index.html" class="back">← Retour au site</a>
+</nav>
+
+<div class="page-hero">
+  <div class="tag">Ressource essentielle</div>
+  <h1>Gestion de l'eau</h1>
+  <p>Le cycle des étangs et les chaînes d'étangs, facteurs clés de la gestion de l'eau en Dombes</p>
+</div>
+
+<div class="content">
+
+  <div class="card">
+    <h2>💧 Anatomie d'un étang dombiste</h2>
+    <p>Les étangs en Dombes sont pour la plupart constitués de la même façon :</p>
+    <div class="etang-grid">
+      <div class="etang-item">
+        <strong>La chaussée</strong>
+        <p>Digue formée en argile retenant l'eau de l'étang.</p>
+      </div>
+      <div class="etang-item">
+        <strong>La prise d'eau</strong>
+        <p>Point d'arrivée de l'eau par un fossé de ceinture, collectant les eaux d'autres étangs et les eaux de pluie par ruissellement.</p>
+      </div>
+      <div class="etang-item">
+        <strong>Le Thou</strong>
+        <p>Ouvrage situé sur la chaussée dont la bonde permet de vider l'étang.</p>
+      </div>
+      <div class="etang-item">
+        <strong>L'Ébie</strong>
+        <p>Trop-plein permettant à l'eau excédentaire de s'écouler.</p>
+      </div>
+      <div class="etang-item">
+        <strong>Le Bief</strong>
+        <p>Fossé traversant l'étang qui recueille l'eau et le poisson au moment de la pêche.</p>
+      </div>
+      <div class="etang-item">
+        <strong>La Pêcherie</strong>
+        <p>Endroit le plus profond de l'étang — lieu de rassemblement du poisson lors de la vidange.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔄 Le fonctionnement cyclique</h2>
+    <p>L'exploitation piscicole d'un étang s'effectue selon un cycle généralement annuel, qui compte au moins trois phases :</p>
+    <div class="cycle-grid">
+      <div class="cycle-item">
+        <div class="num">🌧️</div>
+        <strong>Le remplissage</strong>
+        <p>Entre l'automne et le printemps, quand les précipitations sont les plus abondantes et les pertes en eau les plus faibles.</p>
+      </div>
+      <div class="cycle-item">
+        <div class="num">🐟</div>
+        <strong>L'empoissonnement</strong>
+        <p>Avec des géniteurs et alevins d'espèces et tailles différentes, optimisant les ressources de l'étang au printemps.</p>
+      </div>
+      <div class="cycle-item">
+        <div class="num">🎣</div>
+        <strong>La vidange et la pêche</strong>
+        <p>Entre octobre et mars.</p>
+      </div>
+      <div class="cycle-item">
+        <div class="num">☀️</div>
+        <strong>L'assec</strong>
+        <p>En moyenne tous les 3-4 ans : permet la minéralisation naturelle de la matière organique des sédiments. Peut être labouré ou mis en culture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔗 Un réseau protégé — la chaîne d'étangs</h2>
+    <p>Les étangs sont reliés les uns aux autres sans connexion avec le Rhône et la Saône à proximité. <strong>La seule source d'eau pour les étangs est la pluie</strong> — c'est donc une denrée rare.</p>
+    <p>Afin d'en optimiser la gestion, un réseau de fossés reliant les étangs a été mis en place. Il permet de récupérer les eaux de ruissellement, les eaux de vidange des étangs, et de garder l'eau au maximum sur le plateau de la Dombes.</p>
+    <div class="note">⚠️ La particularité de la Dombes est que les étangs sont des propriétés privées dans lesquelles circule un <strong>bien collectif, l'eau</strong>. Il est interdit de la dévier ou de la conserver. L'application de ces principes nécessite communication, médiation et sens des responsabilités de chaque usager.</div>
+  </div>
+
+  <div class="card">
+    <h2>🌡️ L'eau en Dombes — un bien collectif à optimiser</h2>
+    <p>La canicule de 2015 et la sécheresse de 2017 ont obligé les pisciculteurs à réfléchir à l'optimisation de la quantité d'eau, essentielle pour la production de poissons mais aussi pour les différents usages (chasse, cynégétique, tourisme…). Cette réflexion se poursuit en collaboration avec l'APPED et l'ADAPRA.</p>
+    <p>À la création des étangs au Moyen-Âge, la problématique de l'eau avait été prise en compte en liant les étangs en chaîne. En 1904, André TRUCHELUT avait condensé les usages locaux de Dombes. En 2017, avec l'appui du département de l'Ain et de l'agence de l'eau, ces usages ont été réadaptés au contexte du 21<sup>e</sup> siècle.</p>
+    <p>Les questions clés :</p>
+    <ul>
+      <li>L'étang : les bonnes pratiques pour conserver l'eau</li>
+      <li>La chaîne d'étangs : les droits et les devoirs</li>
+      <li>Les fossés : leur rôle et qui fait quoi ?</li>
+      <li>En cas de non-respect, que se passe-t-il ?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>♻️ Solutions face au réchauffement climatique</h2>
+    <p>Le réchauffement climatique entraîne une évapotranspiration importante. L'étang doit être rempli au maximum en mars afin de pouvoir garder des poissons jusqu'à la prochaine pêche. Pour cela :</p>
+    <ul>
+      <li><strong>Nettoyer les grilles d'étangs</strong> — À l'automne, les feuilles obstruent les grilles et l'eau part dans les fossés. Une solution envisagée : des grilles avec un angle d'inclinaison et un système électrique ou solaire. Une perte d'eau pour un étang peut être estimée à <strong>45 %</strong>.</li>
+      <li><strong>Adapter les méthodes de pêche</strong> — Mettre en place la pêche en grande eau sans vider l'étang totalement. Prévoir des bassins profonds sur le pourtour pour maintenir les espèces carnassières.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>⚖️ Cours d'eau ou fossé — une distinction complexe</h2>
+    <p>La loi ne définit pas clairement ce qu'il faut entendre par cours d'eau ou fossé. Une proposition de loi adoptée par le Sénat le 21 novembre 2013 propose de définir un cours d'eau comme <em>« un écoulement d'eau courante dans un lit naturel à l'origine, alimenté par une source et présentant un débit suffisant la majeure partie de l'année »</em>.</p>
+    <p>Une circulaire du Ministère de l'écologie rappelle que la qualification repose essentiellement sur deux critères : la présence et permanence d'un lit naturel à l'origine, et la permanence d'un débit suffisant une majeure partie de l'année (Circ. du 2 mars 2005).</p>
+    <p>Par déduction, le fossé est aménagé de la main de l'homme et ne dispose pas d'un débit suffisant la majeure partie de l'année — ce n'est qu'un déversoir artificiel.</p>
+    <div class="highlight">
+      <p>💡 En cas de doute sur la qualification de cours d'eau ou de fossé, contactez la <strong>police de l'eau</strong>. Un bon accord vaut mieux qu'un mauvais procès — ils sauront vous aiguiller.<br><br>
+      <em>Attention : la définition d'un cours d'eau au sens de la réglementation relative à la police de l'eau est différente de celle retenue en matière de conditionnalité des aides.</em></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Syndicat des Étangs de la Dombes</strong> — 2 Grande rue, 01320 CHALAMONT<br>
+  Tél. 04 74 36 62 81 · Mobile 07 85 90 30 55 · <a href="mailto:syndicatdesetangsdeladombes@gmail.com">syndicatdesetangsdeladombes@gmail.com</a>
+</footer>
+
+</body>
+</html>
