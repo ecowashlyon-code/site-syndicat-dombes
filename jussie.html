@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Jussie — Syndicat des Étangs de la Dombes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --marine: #1a3a5c;
+      --or:     #c8952a;
+      --vert:   #3d7a4e;
+      --rouge:  #c0392b;
+      --blanc:  #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #333; background: #f8f6f0; }
+    nav { background: var(--marine); padding: 16px 32px; display: flex; align-items: center; gap: 20px; }
+    nav img { height: 44px; width: auto; }
+    nav a.back { margin-left: auto; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    nav a.back:hover { color: var(--or); }
+    .page-hero { background: linear-gradient(135deg, #2d6a4f 0%, #52b788 100%); color: var(--blanc); text-align: center; padding: 56px 24px 48px; }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 16px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; }
+    .content { max-width: 860px; margin: 0 auto; padding: 48px 24px 72px; }
+    .card { background: #fff; border-radius: 12px; padding: 36px 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); margin-bottom: 28px; }
+    .card h2 { font-family: 'Playfair Display', serif; color: var(--marine); font-size: 1.25rem; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0ede6; }
+    .card p { color: #444; line-height: 1.8; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { color: #444; line-height: 1.9; padding-left: 22px; margin-top: 8px; }
+    .card li { margin-bottom: 8px; }
+    .card strong { color: var(--marine); }
+    .alert { background: #fce4ec; border-left: 4px solid var(--rouge); padding: 14px 18px; border-radius: 0 8px 8px 0; color: #6d0000; font-size: 0.93rem; margin-top: 16px; line-height: 1.7; }
+    .alert strong { color: var(--rouge); }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
+    .stat-item { background: #f8faf5; border-radius: 10px; padding: 18px 16px; text-align: center; border-top: 3px solid var(--vert); }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--vert); font-weight: 700; margin-bottom: 6px; }
+    .stat-item p { font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .method-item { background: #f0f7f4; border-radius: 8px; padding: 16px 18px; border-left: 3px solid var(--vert); }
+    .method-item strong { display: block; color: var(--vert); margin-bottom: 6px; font-size: 0.95rem; }
+    .method-item p { font-size: 0.88rem; color: #555; line-height: 1.6; margin: 0; }
+    .note { background: #fff8e6; border-left: 3px solid var(--or); padding: 12px 16px; border-radius: 0 8px 8px 0; color: #666; font-size: 0.92rem; margin-top: 16px; line-height: 1.7; }
+    footer { background: var(--marine); color: rgba(255,255,255,0.65); text-align: center; padding: 28px 24px; font-size: 0.85rem; }
+    footer strong { color: rgba(255,255,255,0.85); }
+    footer a { color: var(--or); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <img src="logo syndicat.PNG" alt="Syndicat des Étangs de la Dombes" />
+  <a href="index.html" class="back">← Retour au site</a>
+</nav>
+
+<div class="page-hero">
+  <div class="tag">⚠ Espèce invasive</div>
+  <h1>La Jussie</h1>
+  <p>Une plante amphibie envahissante qui menace les étangs dombistes depuis 1995</p>
+</div>
+
+<div class="content">
+
+  <div class="card">
+    <h2>🌿 Présentation</h2>
+    <p>La jussie (<em>Ludwigia</em> spp.) est une plante aquatique originaire d'Amérique du Sud, introduite en Europe comme plante ornementale d'aquarium. Elle colonise rapidement les berges et les eaux peu profondes, formant des tapis denses qui étouffent la végétation indigène, réduisent l'oxygène disponible et perturbent profondément l'équilibre écologique des étangs.</p>
+    <p>Dans l'Ain, <strong>les premières mentions de la présence de Jussie remontent à 1995</strong>, sur un étang de Saint-Paul de Varax. Depuis, de nouveaux sites sont régulièrement découverts.</p>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="num">1995</div><p>Première détection dans l'Ain (Saint-Paul de Varax)</p></div>
+      <div class="stat-item"><div class="num">63</div><p>Sites colonisés recensés en 2022</p></div>
+      <div class="stat-item"><div class="num">50 000 €</div><p>Budget annuel du Département pour le plan de lutte</p></div>
+      <div class="stat-item"><div class="num">2012</div><p>Lancement du plan départemental de lutte</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⚠️ Impacts sur les étangs</h2>
+    <p>La prolifération de la jussie engendre de nombreuses conséquences néfastes pour les étangs dombistes :</p>
+    <ul>
+      <li>Formation de tapis denses qui interceptent la lumière et asphyxient la végétation aquatique indigène</li>
+      <li>Réduction de la teneur en oxygène dissous dans l'eau, nuisible à la faune piscicole</li>
+      <li>Obstruction des grilles et ouvrages hydrauliques (thou, ébie)</li>
+      <li>Entrave à la pêche et à la vidange des étangs</li>
+      <li>Appauvrissement de la biodiversité aquatique et des zones humides</li>
+      <li>Coûts d'entretien importants pour les propriétaires et exploitants</li>
+    </ul>
+    <div class="alert">
+      <strong>🔔 Signalez toute présence de jussie</strong> sur votre étang au Syndicat dès que possible. Une intervention rapide est cruciale pour contenir la propagation.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🏛️ Le plan départemental de lutte</h2>
+    <p>En 2012, le Département de l'Ain s'est fortement impliqué en décidant de porter un <strong>plan d'actions départemental de lutte contre les Jussies</strong>, afin de coordonner les actions isolées des propriétaires.</p>
+    <p>La <strong>Déclaration d'Intérêt Général</strong> (Arrêté du 27 janvier 2014) associée au plan de lutte permet de mobiliser des fonds publics pour intervenir sur des parcelles privées, au titre de l'intérêt général de l'action.</p>
+    <p>Depuis 2014, le Département a confié la mise en œuvre technique du plan de lutte à la <strong>FREDON AURA</strong> (Fédération Régionale de Défense contre les Organismes Nuisibles d'Auvergne-Rhône-Alpes).</p>
+    <div class="note">📋 Le Département de l'Ain consacre annuellement <strong>près de 50 000 euros</strong> pour la mise en œuvre du plan de lutte contre la jussie.</div>
+  </div>
+
+  <div class="card">
+    <h2>🛠️ Méthodes de lutte</h2>
+    <p>La lutte contre la jussie repose principalement sur des techniques manuelles et mécaniques, sans recours à des produits chimiques :</p>
+    <div class="method-grid">
+      <div class="method-item"><strong>🤲 Arrachage manuel</strong><p>Technique principale : extraction à la main des pieds de jussie, idéalement avant la floraison pour éviter la dissémination des graines.</p></div>
+      <div class="method-item"><strong>🚜 Arrachage mécanique</strong><p>Pour les grandes surfaces colonisées : intervention avec engins adaptés (pelles amphibies, barges) pour extraire les masses végétales.</p></div>
+      <div class="method-item"><strong>☀️ Assec</strong><p>La mise en assec de l'étang, exposant les rhizomes au gel et à la dessiccation, contribue à réduire significativement la population de jussie.</p></div>
+      <div class="method-item"><strong>🚫 Prévention</strong><p>Nettoyage des engins et embarcations avant de passer d'un étang à l'autre pour éviter la propagation par fragments de tiges.</p></div>
+    </div>
+    <div class="note">⚠️ La jussie se propage facilement par bouturage : chaque fragment de tige est capable de donner naissance à un nouveau plant. Un nettoyage soigneux du matériel est indispensable.</div>
+  </div>
+
+  <div class="card">
+    <h2>📞 Que faire en cas de présence ?</h2>
+    <p>Si vous constatez la présence de jussie sur votre étang ou dans les fossés avoisinants :</p>
+    <ul>
+      <li>Contactez le <strong>Syndicat des Étangs de la Dombes</strong> au 04 74 36 62 81 ou par email à <a href="mailto:syndicatdesetangsdeladombes@gmail.com" style="color:#1a3a5c;">syndicatdesetangsdeladombes@gmail.com</a></li>
+      <li>N'intervenez pas seul sans conseil préalable — une intervention mal conduite peut aggraver la propagation</li>
+      <li>Prenez des photos pour documenter l'étendue de la colonisation</li>
+      <li>Contactez également la <strong>FREDON AURA</strong>, chargée de la coordination du plan de lutte dans le département</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <strong>Syndicat des Étangs de la Dombes</strong> — 2 Grande rue, 01320 CHALAMONT<br>
+  Tél. 04 74 36 62 81 · Mobile 07 85 90 30 55 · <a href="mailto:syndicatdesetangsdeladombes@gmail.com">syndicatdesetangsdeladombes@gmail.com</a>
+</footer>
+
+</body>
+</html>
