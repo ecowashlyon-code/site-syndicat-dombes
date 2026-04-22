@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Myriophylle — Syndicat des Étangs de la Dombes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --marine: #1a3a5c;
+      --or:     #c8952a;
+      --vert:   #3d7a4e;
+      --rouge:  #c0392b;
+      --blanc:  #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #333; background: #f8f6f0; }
+    nav { background: var(--marine); padding: 16px 32px; display: flex; align-items: center; gap: 20px; }
+    nav img { height: 44px; width: auto; }
+    nav a.back { margin-left: auto; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    nav a.back:hover { color: var(--or); }
+    .page-hero { background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); color: var(--blanc); text-align: center; padding: 56px 24px 48px; }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 16px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.85); font-size: 1.05rem; }
+    .content { max-width: 860px; margin: 0 auto; padding: 48px 24px 72px; }
+    .card { background: #fff; border-radius: 12px; padding: 36px 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); margin-bottom: 28px; }
+    .card h2 { font-family: 'Playfair Display', serif; color: var(--marine); font-size: 1.25rem; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #f0ede6; }
+    .card p { color: #444; line-height: 1.8; margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { color: #444; line-height: 1.9; padding-left: 22px; margin-top: 8px; }
+    .card li { margin-bottom: 8px; }
+    .card strong { color: var(--marine); }
+    .alert { background: #fce4ec; border-left: 4px solid var(--rouge); padding: 14px 18px; border-radius: 0 8px 8px 0; color: #6d0000; font-size: 0.93rem; margin-top: 16px; line-height: 1.7; }
+    .alert strong { color: var(--rouge); }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-top: 18px; }
+    .stat-item { background: #eaf4fb; border-radius: 10px; padding: 18px 16px; text-align: center; border-top: 3px solid #2e86c1; }
+    .stat-item .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #1a5276; font-weight: 700; margin-bottom: 6px; }
+    .stat-item p { font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0; }
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+    .method-item { background: #eaf4fb; border-radius: 8px; padding: 16px 18px; border-left: 3px solid #2e86c1; }
+    .method-item strong { display: block; color: #1a5276; margin-bottom: 6px; font-size: 0.95rem; }
+    .method-item p { font-size: 0.88rem; color: #555; line-height: 1.6; margin: 0; }
+    .note { background: #fff8e6; border-left: 3px solid var(--or); padding: 12px 16px; border-radius: 0 8px 8px 0; color: #666; font-size: 0.92rem; margin-top: 16px; line-height: 1.7; }
+    footer { background: var(--marine); color: rgba(255,255,255,0.65); text-align: center; padding: 28px 24px; font-size: 0.85rem; }
+    footer strong { color: rgba(255,255,255,0.85); }
+    footer a { color: var(--or); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<nav>
+  <img src="logo syndicat.PNG" alt="Syndicat des Étangs de la Dombes" />
+  <a href="index.html" class="back">← Retour au site</a>
+</nav>
+<div class="page-hero">
+  <div class="tag">⚠ Espèce invasive</div>
+  <h1>La Myriophylle</h1>
+  <p>Une plante aquatique envahissante qui menace les étangs et plans d'eau de la Dombes</p>
+</div>
+<div class="content">
+  <div class="card">
+    <h2>🌱 Présentation</h2>
+    <p>Le myriophylle du Brésil (<em>Myriophyllum aquaticum</em>) est une plante aquatique originaire d'Amérique du Sud, introduite en Europe comme plante ornementale d'aquarium et de bassin. Très prisée pour son feuillage délicat et vert vif, elle a été largement commercialisée avant que ses capacités envahissantes soient pleinement reconnues.</p>
+    <p>Elle colonise les plans d'eau peu profonds et les berges humides, formant des tapis denses en surface qui interceptent la lumière, appauvrissent l'oxygène et perturbent profondément l'équilibre écologique des étangs dombistes. <strong>Sa résistance et sa capacité à se régénérer à partir d'un simple fragment</strong> en font un adversaire particulièrement redoutable.</p>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="num">5 m</div><p>Longueur maximale des tiges, s'étendant sur toute la colonne d'eau</p></div>
+      <div class="stat-item"><div class="num">100 %</div><p>Des fragments de tige sont capables de donner naissance à un nouveau plant</p></div>
+      <div class="stat-item"><div class="num">2 m</div><p>Profondeur maximale colonnisée dans les étangs dombistes</p></div>
+      <div class="stat-item"><div class="num">1999</div><p>Classée espèce invasive préoccupante en Europe</p></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>⚠️ Impacts sur les étangs</h2>
+    <p>La prolifération du myriophylle engendre de nombreuses conséquences néfastes pour les étangs dombistes :</p>
+    <ul>
+      <li>Formation de tapis denses en surface qui interceptent la lumière et asphyxient la végétation aquatique indigène</li>
+      <li>Diminution drastique de la teneur en oxygène dissous, nuisible à la faune piscicole et aux amphibiens</li>
+      <li>Obstruction des grilles et ouvrages hydrauliques (thou, ébie), compliquant la gestion des niveaux d'eau</li>
+      <li>Entrave à la pêche : les filets et lignes se prennent dans la végétation dense</li>
+      <li>Réduction de la production piscicole par compétition avec les espèces végétales naturelles</li>
+      <li>Appauvrissement général de la biodiversité aquatique et des zones humides</li>
+      <li>Coûts d'entretien très importants pour les propriétaires et exploitants d'étangs</li>
+    </ul>
+    <div class="alert"><strong>🔔 Signalez toute présence de myriophylle</strong> sur votre étang au Syndicat dès que possible. Une intervention rapide est cruciale pour éviter une propagation incontrôlable.</div>
+  </div>
+  <div class="card">
+    <h2>🏙️ Cadre réglementaire</h2>
+    <p>Le myriophylle du Brésil est inscrit sur la <strong>liste des espèces exotiques envahissantes préoccupantes pour l'Union européenne</strong> (Règlement UE n°1143/2014). À ce titre :</p>
+    <ul>
+      <li>Son introduction, sa détention, son transport, sa vente et son utilisation sont <strong>strictement interdits</strong></li>
+      <li>Les propriétaires ont l'obligation de signaler sa présence aux autorités compétentes</li>
+      <li>Des mesures de gestion rapide sont requises dès la détection de nouvelles populations</li>
+    </ul>
+    <p style="margin-top:12px;">Le Syndicat des Étangs de la Dombes travaille en coordination avec le <strong>Département de l'Ain</strong>, la <strong>FREDON AURA</strong> et les services de l'État pour organiser la surveillance et la lutte contre cette espèce sur le territoire dombiste.</p>
+    <div class="note">📋 Ne jamais vider un aquarium ou un bassin contenant du myriophylle dans un milieu naturel, un fossé ou un cours d'eau. Même un fragment minuscule suffit à coloniser un nouvel étang.</div>
+  </div>
+  <div class="card">
+    <h2>🛠️ Méthodes de lutte</h2>
+    <p>La lutte contre le myriophylle est particulièrement difficile en raison de sa capacité à se régénérer à partir de fragments. Elle repose sur des techniques manuelles et mécaniques, sans recours à des produits chimiques :</p>
+    <div class="method-grid">
+      <div class="method-item"><strong>🤲 Arrachage manuel</strong><p>Extraction à la main des touffes de myriophylle, avec récupération soigneuse de tous les fragments pour éviter la dissémination.</p></div>
+      <div class="method-item"><strong>🚜 Arrachage mécanique</strong><p>Pour les grandes surfaces colonnisées : intervention avec engins adaptés (pelles amphibies, barges faucheuses) pour extraire les masses végétales.</p></div>
+      <div class="method-item"><strong>☀️ Assec</strong><p>La mise en assec exposant les rhizomes au gel et à la dessiccation est une des méthodes les plus efficaces pour réduire significativement les populations.</p></div>
+      <div class="method-item"><strong>🚫 Prévention</strong><p>Nettoyage systématique de tout matériel (filets, pompes, embarcations) avant de passer d'un étang à un autre pour éviter la propagation par bouturage.</p></div>
+    </div>
+    <div class="note">⚠️ Le myriophylle se propage extrêmement facilement par bouturage : chaque fragment de tige peut donner naissance à un nouveau plant. Un nettoyage minutieux du matériel et des embarcations est absolument indispensable.</div>
+  </div>
+  <div class="card">
+    <h2>📞 Que faire en cas de présence ?</h2>
+    <p>Si vous constatez la présence de myriophylle sur votre étang ou dans les fossés avoisinants :</p>
+    <ul>
+      <li>Contactez le <strong>Syndicat des Étangs de la Dombes</strong> au 04 74 36 62 81 ou par email à <a href="mailto:syndicatdesetangsdeladombes@gmail.com" style="color:#1a3a5c;">syndicatdesetangsdeladombes@gmail.com</a></li>
+      <li>N'intervenez pas seul sans conseil préalable — une intervention mal conduite peut aggraver la propagation par dissémination de fragments</li>
+      <li>Prenez des photos pour documenter l'étendue de la colonisation et facilitez le diagnostic</li>
+      <li>Contactez également la <strong>FREDON AURA</strong>, chargée de la coordination de la lutte contre les espèces invasives dans le département de l'Ain</li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <strong>Syndicat des Étangs de la Dombes</strong> — 2 Grande rue, 01320 CHALAMONT<br>
+  Tél. 04 74 36 62 81 · Mobile 07 85 90 30 55 · <a href="mailto:syndicatdesetangsdeladombes@gmail.com">syndicatdesetangsdeladombes@gmail.com</a>
+</footer>
+</body>
+</html>
